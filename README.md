@@ -1,0 +1,1 @@
+# zoloto_nuxt3
