@@ -3,9 +3,5 @@
 </template>
 <script>
 export default {
-	middleware: ['test'],
-	created() {
-		console.log(this.$route)
-	}
 }
 </script>

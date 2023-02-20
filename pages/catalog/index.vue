@@ -1,13 +1,12 @@
 <template>
-	<p>213</p>
-<!--	<div class="container">-->
-<!--		<catalog-card-->
-<!--			v-for="product in products"-->
-<!--			:key="product.id"-->
-<!--			:card="product"-->
-<!--			@click="openProduct(product.id)"-->
-<!--		/>-->
-<!--	</div>-->
+	<div class="container">
+		<catalog-card
+			v-for="product in products"
+			:key="product.id"
+			:card="product"
+			@click="openProduct(product.id)"
+		/>
+	</div>
 </template>
 <script>
 import CatalogCard from "~/components/CatalogCard.vue";
@@ -18,6 +17,7 @@ const request = new Promise((resolve)=>{
 		resolve(catalogResponse)
 	}, 500)
 })
+
 export default {
 	name: 'IndexPage',
 	components: [CatalogCard],
@@ -27,26 +27,20 @@ export default {
 			products: null
 		}
 	},
-	middleware(){
-		console.log(123)
-	},
 	methods: {
-		openProduct(product) {
-			console.log(product)
-			this.$router.push({
-				name: 'test',
-				params: product
-			})
+		openProduct(productId) {
+			this.$router.addRoute({ path: '/customUrl', name: 'custom', params: { id: productId },  component: () => import('./[id].vue')})
+			this.$router.push({ name: 'custom' })
 		}
 	},
 	async created() {
-		// const res = await request
-		// if(!res.url){
-		// 	this.$router.push({name: 'error'})
-		// }
-		// this.$router.push(res.url)
-		// this.catalogResponse = res
-		// this.products = res.products
+		const res = await request
+		if(!res.url){
+			this.$router.push({name: 'error'})
+		}
+
+		this.catalogResponse = res
+		this.products = res.products
 	}
 }
 </script>

@@ -1,9 +1,8 @@
 <template>
-	<nuxt-link to="/catalog">go to catalog</nuxt-link>
+	<nuxt-link :to="{ name: 'test' }">go to catalog</nuxt-link>
 </template>
-<script>
-export default {
-	name: 'IndexPage',
-	middleware: ['test']
-}
+<script setup>
+definePageMeta({
+	middleware: 'check-catalog-url',
+})
 </script>
