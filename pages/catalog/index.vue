@@ -4,7 +4,7 @@
 			v-for="product in products"
 			:key="product.id"
 			:card="product"
-			@click="openProduct(product.id)"
+			@click="openProduct(product)"
 		/>
 	</div>
 </template>
@@ -28,8 +28,9 @@ export default {
 		}
 	},
 	methods: {
-		openProduct(productId) {
-			this.$router.addRoute({ path: '/customUrl', name: 'custom', params: { id: productId },  component: () => import('./[id].vue')})
+		openProduct(product) {
+			console.log(product)
+			this.$router.addRoute({ path: product.detailPageUrl, name: 'custom', params: { product },  component: () => import('./product.vue')})
 			this.$router.push({ name: 'custom' })
 		}
 	},

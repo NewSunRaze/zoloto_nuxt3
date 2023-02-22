@@ -1,4 +1,5 @@
 export default {
+  'layout': 'catalog',
   "url" : "/tip-noshenija-cep/metall-serebro/pokrytie-chernenie/dizajn-bismark/?pokrytie-rodirovanie",
   "products" : [
     {
@@ -8,7 +9,7 @@ export default {
       "code": null,
       "cover": null,
       "description": "Подвес с фиан., родир.",
-      "detailPageUrl": "",
+      "detailPageUrl": "/catalog/podves/tipnoshenia/703005184-podves/",
       "detailPicture": null,
       "diamondCut": null,
       "emptiness": null,
