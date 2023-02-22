@@ -6,9 +6,7 @@ const request = new Promise((resolve)=>{
     }, 500)
 })
 export default defineNuxtRouteMiddleware(async (to, from) => {
-    const data = await useFetch('/api/mountains/everest', { pick: ['title', 'description'] })
-    console.log('data', data)
-
+    const response = await fetch('https://web-7768.symfony.zoloto585.ru/api/catalog/yuvelirnye_izdeliya/kolca/size-17/?sort=sort')
     console.log('middlewaer init')
     const res = await request
     const router = useRouter()
