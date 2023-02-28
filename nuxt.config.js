@@ -8,5 +8,6 @@ export default defineNuxtConfig({
                 children: []
             })
         }
-    }
+    },
+    modules: ['@pinia/nuxt'],
 })

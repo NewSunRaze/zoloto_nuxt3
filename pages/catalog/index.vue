@@ -10,8 +10,9 @@
 </template>
 <script>
 import CatalogCard from "~/components/CatalogCard.vue";
+import { mainStore } from '~/store/store'
 
-
+const store = mainStore()
 export default {
 	name: 'IndexPage',
 	components: [CatalogCard],
@@ -23,19 +24,19 @@ export default {
 	},
 	methods: {
 		openProduct(product) {
-			console.log(product)
-			this.$router.addRoute({ path: product.detailPageUrl, name: 'custom', params: { product },  component: () => import('./product.vue')})
-			this.$router.push({ name: 'custom' })
+			this.$router.addRoute({ path: product.url, name: 'productPage', params: { url: product.url },  component: () => import('./product.vue')})
+			this.$router.push({ name: 'productPage' })
 		}
 	},
-	async created(){
-		console.log(this.$route)
+	created(){
+		this.products = store.catalogData
 	}
 }
 </script>
 <style>
 .container {
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 }
 </style>
