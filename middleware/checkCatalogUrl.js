@@ -21,11 +21,16 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     }
     store.setCatalogData(response.products)
 
+    const routerParams = {
+        path: response.url,
+        name: 'newPage'
+    }
     if(response.layout === 'catalog'){
-        router.addRoute({ path: response.url, name: 'newPage', component: () => import('../pages/catalog/index.vue')})
+        routerParams.component = () => import('../pages/catalog/index.vue')
     }
     if(response.layout === 'product') {
-        router.addRoute({ path: response.url, name: 'newPage', component: () => import('../pages/catalog/product.vue')})
+        routerParams.component = () => import('../pages/catalog/product.vue')
     }
+    router.addRoute(routerParams)
     router.push({ name: 'newPage' })
 });
