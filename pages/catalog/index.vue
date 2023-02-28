@@ -10,13 +10,7 @@
 </template>
 <script>
 import CatalogCard from "~/components/CatalogCard.vue";
-import catalogResponse from "~/app/mocData/catalog-response"
 
-const request = new Promise((resolve)=>{
-	setTimeout(()=>{
-		resolve(catalogResponse)
-	}, 500)
-})
 
 export default {
 	name: 'IndexPage',
@@ -34,14 +28,8 @@ export default {
 			this.$router.push({ name: 'custom' })
 		}
 	},
-	async created() {
-		const res = await request
-		if(!res.url){
-			this.$router.push({name: 'error'})
-		}
-
-		this.catalogResponse = res
-		this.products = res.products
+	async created(){
+		console.log(this.$route)
 	}
 }
 </script>

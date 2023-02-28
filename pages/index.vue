@@ -1,5 +1,5 @@
 <template>
-	<nuxt-link :to="{ name: 'test' }">go to catalog</nuxt-link>
+	<nuxt-link :to="{ path: 'catalog/yuvelirnye_izdeliya/kolca/size-17/?sort=sort' }">go to catalog</nuxt-link>
 </template>
 <script setup>
 definePageMeta({
