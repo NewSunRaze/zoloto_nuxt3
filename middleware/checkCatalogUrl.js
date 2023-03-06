@@ -9,8 +9,9 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         return
     }
 
-    let response = await fetch(`https://web-7768.symfony.zoloto585.ru/api${to.fullPath}`)
-    if(response.status === 404){
+    let response = await fetch(`https://develop.symfony.zoloto585.ru/api${to.fullPath}`)
+    console.log(response.status)
+    if(response.status !== 200){
         throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
     }
     response = await response.json()
